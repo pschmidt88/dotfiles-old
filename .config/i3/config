@@ -36,8 +36,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set -D pulse Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set -D pulse Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle 
 
@@ -187,6 +187,7 @@ mode "$mode_launcher" {
 	bindsym f exec firefox
 	bindsym i exec /opt/idea-IU-212.5457.46/bin/idea.sh 
 	bindsym c exec code
+	bindsym o exec /opt/Obsidian/obsidian
 
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
@@ -196,31 +197,44 @@ exec_always --no-startup-id picom --experimental-backends &
 exec_always --no-startup-id $HOME/.config/polybar/launch-multi-monitor.sh
 exec_always nitrogen --restore
 exec_always playerctld daemon
+exec_always --no-startup-id /usr/libexec/gsd-xsettings
 
 # remove title bar
 for_window [class="·*"] border pixel 1
+
 
 # gaps
 gaps inner 10
 
 exec_always --no-startup-id xrandr --output DP-1 --primary --mode 1920x1080 --rate 119.98 --output eDP-1 --mode 1920x1200 --left-of DP-1 &
 
-assign [class="firefox"] number "2: web"
+workspace $term output +*DP-1
+workspace $web output +*DP-1
+workspace $code output +*DP-1
 
-workspace $ws2 output +*DP-1
-workspace $ws1 output +*DP-1
-workspace $ws3 output +*DP-1
-
-workspace $ws3 output +eDP-1
-workspace $ws6 output +eDP-1
+workspace $music output +eDP-1
 
 workspace_auto_back_and_forth yes
 
 bindsym $mod+x move workspace to output right
 bindsym $mod+y move workspace to output left
 bindsym Print exec flameshot gui
+bindsym $mod+Escape exec i3lock -i $HOME/Pictures/Wallpapers/wallhaven-0w2j7r_1920x1080.png -t
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+#bindsym XF86MonBrightnessDown
+#bindsym XF86MonBrightnessUp
+
+assign [class="firefox"] number $web
+
+# assign spotify to workspace does not work, 
+# because spotify does not set WM CLASS NAME on startup
+# workaround with for_window
+#assign [class="Spotify"] number $music
+for_window [class="Spotify"] move to workspace $music
+
+
