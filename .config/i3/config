@@ -59,6 +59,8 @@ bindsym $mod+d exec $HOME/.config/rofi/launchers/misc/launcher.sh
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
+focus_follows_mouse no
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
