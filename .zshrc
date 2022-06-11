@@ -112,17 +112,24 @@ alias vim="nvim"
 
 source ~/.aliases
 
-export PATH="$HOME/.jenv/bin:/usr/local/go/bin:$PATH"
-eval "$(jenv init -)"
+if [ -x "$(command -v jenv)" ]; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
 
-export GOPRIVATE=dev.azure.com/finorun
-export GOPATH=$(go env GOPATH)
-export PATH="$PATH:/$GOPATH/bin"
+if [ -x "$(command -v go)" ]; then
+  export GOPRIVATE=dev.azure.com/finorun
+  export GOPATH=$(go env GOPATH)
+  export PATH="$PATH:/$GOPATH/bin"
+fi
 
-alias k=kubectl
-complete -F __start_kubectl k
+if [ -x "$(command -v kubectl)" ]; then
+  alias k=kubectl
+  complete -F __start_kubectl k
+  source <(kubectl completion zsh)
+fi
 
-source <(kubectl completion zsh)
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -47,6 +47,8 @@ window:
   opacity: 0.9
 
 font:
+  offset:
+    y: 3
   size: 11.0
   normal:
     family: Ubuntu Mono
