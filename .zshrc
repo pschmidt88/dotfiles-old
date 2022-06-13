@@ -155,3 +155,5 @@ else
     eval `ssh-agent | tee ~/.ssh/agent.env`
     ssh-add
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
