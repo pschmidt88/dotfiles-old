@@ -5,3 +5,7 @@ if type "xrandr"; then
 else
   $HOME/.config/polybar/launch.sh --blocks &
 fi
+
+#MONITOR=DP-3-1 $HOME/.config/polybar/launch.sh --blocks &
+#MONITOR=DP-3-2 $HOME/.config/polybar/launch.sh --blocks &
+
