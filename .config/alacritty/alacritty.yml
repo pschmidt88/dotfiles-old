@@ -71,4 +71,4 @@ font:
 live_config_reload: true
 dynamic_padding: true
 shell:
-   program: /bin/fish
+  program: /bin/fish
