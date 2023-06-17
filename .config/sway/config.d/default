@@ -52,7 +52,7 @@ exec swayidle -w\
     bindsym $mod+d exec $menu
 
     # Launcher
-    bindsym $mod+Shift+d exec $launcher
+    # bindsym $mod+Shift+Alt+d exec $launcher
 
     # Activities
     bindsym $mod+p exec swayr switch-window
@@ -131,6 +131,11 @@ exec swayidle -w\
     # move workspace across outputs/monitors
     bindsym $mod+Shift+x move workspace to output right
     bindsym $mod+Shift+y move workspace to output left
+
+    bindsym $mod+Shift+a move workspace to output left
+    bindsym $mod+Shift+s move workspace to output down
+    bindsym $mod+Shift+d move workspace to output right
+    bindsym $mod+Shift+w move workspace to output up
 #
 # Layout stuff:
 #

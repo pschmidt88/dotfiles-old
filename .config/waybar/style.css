@@ -45,7 +45,7 @@ nord15 #b48ead
     border: 0;
     border-radius: 0;
     padding: 0 0;
-    font-family:UbuntuMono;
+    font-family: "Noto Sans Mono";
     font-size: 15px;
     margin-right: 5px;
     margin-left: 5px;
@@ -62,7 +62,7 @@ window#waybar {
     color: #eceff4;
     border-color: #d8dee9;
     border-style: solid;
-    margin-top:2px;
+    margin-top: 2px;
 }
 
 #workspaces button.focused {
