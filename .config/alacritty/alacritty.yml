@@ -65,10 +65,14 @@ window:
     y: 20
 font:
   normal:
-    family: JetbrainsMonoNL
+    family: JetBrainsMono
     style: Regular
-  size: 12
+  size: 11
 live_config_reload: true
 dynamic_padding: true
 shell:
   program: /bin/fish
+  args:
+    - -l
+    - -c
+    - "tmux"
