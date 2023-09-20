@@ -72,9 +72,9 @@ window:
     y: 10
 font:
   normal:
-    family: "Lilex Nerd Font"
+    family: "Inconsolata Nerd Font"
     style: Regular
-  size: 11
+  size: 12
   offset:
     y: 0
 live_config_reload: true
